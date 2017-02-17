@@ -41,16 +41,31 @@ public class MainActivity extends AppCompatActivity {
         // Find the view pager that will allow the user to swipe between fragments
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
 
-        // Create an adapter that knows which fragment should be shown on each page
-        SimpleFragmentPagerAdapter adapter = new SimpleFragmentPagerAdapter(getSupportFragmentManager());
 
-        Fragment f1 = FridayFragment.newInstance("f1");
-        Fragment f2 = FridayFragment.newInstance("f1");
-        Fragment f3 = FridayFragment.newInstance("f1");
-        Fragment f4 = FridayFragment.newInstance("f1");
-        Fragment f5 = FridayFragment.newInstance("f1");
+        Fragment f1 = new DayFragment();
+        Bundle b1 = new Bundle();
+        b1.putString("Text", "Monday");
+        f1.setArguments(b1);
 
+        Fragment f2 = new DayFragment();
+        Bundle b2 = new Bundle();
+        b2.putString("Text", "Tuesday");
+        f2.setArguments(b2);
 
+        Fragment f3 = new DayFragment();
+        Bundle b3 = new Bundle();
+        b3.putString("Text", "wednesday");
+        f3.setArguments(b3);
+
+        Fragment f4 = new DayFragment();
+        Bundle b4 = new Bundle();
+        b4.putString("Text", "Thursday");
+        f4.setArguments(b4);
+
+        Fragment f5 = new DayFragment();
+        Bundle b5 = new Bundle();
+        b5.putString("Text", "Friday");
+        f5.setArguments(b5);
 
 
         ArrayList<Fragment> fragments = new ArrayList<Fragment>();
@@ -59,6 +74,9 @@ public class MainActivity extends AppCompatActivity {
         fragments.add(f3);
         fragments.add(f4);
         fragments.add(f5);
+
+        // Create an adapter that knows which fragment should be shown on each page
+        SimpleFragmentPagerAdapter adapter = new SimpleFragmentPagerAdapter(getSupportFragmentManager(), fragments);
 
         // Set the adapter onto the view pager
         viewPager.setAdapter(adapter);
